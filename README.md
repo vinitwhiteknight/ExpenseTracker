@@ -1,28 +1,54 @@
-# Personal Expense Tracker (CLI)
+# 📊 Personal Expense Tracker (CLI)
 
-## Project Overview
-This project is a Command-Line Interface (CLI) Personal Expense Tracker built entirely in Java. It allows users to log daily expenses, view a chronological history of their spending, and instantly calculate their total spending broken down by category. 
+## 📝 Project Overview
+The Personal Expense Tracker is a lightweight, fully offline Command-Line Interface (CLI) application built entirely in Java. 
 
-It was designed with a focus on core Object-Oriented Programming (OOP) principles, utilizing Java Collections (`ArrayList` and `HashMap`) for efficient in-memory data aggregation, and `java.time` for robust date handling.
+While many modern budgeting tools are bloated with complex graphical interfaces, online syncing requirements, and paywalls, this project takes a minimalist approach. It provides a fast, frictionless, and strictly private way for users to log their daily financial transactions and instantly gain insights into their spending habits through category-based aggregation.
 
-## Prerequisites
-* Java Development Kit (JDK) 8 or higher installed on your system.
+This project was developed with a strong emphasis on clean code, **Object-Oriented Programming (OOP)** principles, and efficient memory management using the Java Collections Framework.
 
-## How to Run the Project
-Because this application runs entirely in memory and uses standard Java libraries, there are no databases to configure or external dependencies to install. 
+---
 
-**If using Visual Studio Code (Recommended):**
-1. Open the folder containing the `.java` files in VS Code.
-2. Open the `Main.java` file.
-3. Click the **Run** button located right above the `public static void main` method.
-4. Interact with the application directly in the VS Code terminal at the bottom of your screen.
+## ✨ Key Features
 
-**If using a standard Terminal/Command Prompt:**
-1. Navigate to the project folder.
-2. Compile the code by running: `javac *.java`
-3. Run the application with: `java Main`
+* **⚡ Frictionless Data Entry:** Users can quickly log expenses by providing a Date, Amount, Category, and Description directly through the terminal.
+* **🛡️ Robust Input Validation:** The application is fortified with defensive programming. It utilizes `try-catch` blocks to handle `InputMismatchException` and `DateTimeParseException`, ensuring that accidental typos (like entering a letter instead of a monetary amount) do not crash the application.
+* **📅 Smart Date Handling:** Leverages the `java.time.LocalDate` API to ensure all transactions are stored chronologically and adhere to a strict `YYYY-MM-DD` format.
+* **🧮 Dynamic Category Aggregation:** Instantly calculates total money spent across all custom categories without needing a database query.
+* **📂 Fully In-Memory:** Runs completely in the terminal's active memory, requiring zero external database configuration or internet connection.
 
-## Features
-* **Add Expense:** Safely parses user input to create an expense record with a Date, Amount, Category, and Description.
-* **View All Expenses:** Displays a formatted table of all recorded transactions.
-* **Category Aggregation:** Iterates through the stored data using a HashMap to dynamically calculate and display total money spent per category.
+---
+
+## 🏗️ Technical Architecture & Concepts
+
+This project demonstrates several core Computer Science and Software Engineering concepts:
+
+* **Separation of Concerns (Model-View-Controller pattern concept):**
+  * `Expense.java` acts as the **Data Model**, encapsulating the properties of a single transaction.
+  * `ExpenseTracker.java` acts as the **Engine/Logic**, handling the storage and mathematical operations.
+  * `Main.java` acts as the **Interface/Controller**, managing the user menu loop and input scanner.
+* **Dynamic Data Structures:** Utilizes `ArrayList<Expense>` to handle an unknown, dynamically growing number of user inputs without the rigid constraints of standard arrays.
+* **Algorithmic Efficiency:** Implements a `HashMap<String, Double>` to aggregate spending totals. Instead of using nested loops with $O(N^2)$ time complexity to search and sum categories, the Map instantly updates running totals by using the category name as a key, achieving highly efficient data processing.
+
+---
+
+## 💻 Installation & Execution
+
+Because this application relies exclusively on standard Java libraries, there are no external dependencies, Maven files, or databases to configure. 
+
+### Prerequisites
+* Java Development Kit (JDK) 8 or higher installed on your local machine.
+
+### Option A: Running via Visual Studio Code (Recommended)
+1. Clone or download this repository.
+2. Open the project folder in VS Code.
+3. Open the `Main.java` file in the editor.
+4. Click the **Run** button located directly above the `public static void main` method.
+5. Interact with the application menu directly within the VS Code integrated terminal.
+
+### Option B: Running via Standard Terminal / Command Prompt
+1. Clone or download this repository.
+2. Open your terminal and navigate to the root directory of the project.
+3. Compile all Java files by running:
+   ```bash
+   javac *.java
